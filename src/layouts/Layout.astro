@@ -1,0 +1,59 @@
+---
+import "@fontsource/titillium-web";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- <div class="w-full my-4 flex justify-end">
+      <div class="flex flex-col justify-center items-center text-sm gap-1">
+        <p>Theme toggle</p>
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div> -->
+    <slot />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: "Titillium Web", sans-serif;
+  }
+</style>
+
+<script>
+  var toggle = document.getElementById("theme-toggle");
+
+  var storedTheme = "light";
+  // var storedTheme = localStorage.getItem("theme") || "light";
+  if (storedTheme)
+    document.documentElement.setAttribute("data-theme", storedTheme);
+
+  toggle.onclick = function () {
+    var currentTheme = document.documentElement.getAttribute("data-theme");
+    var targetTheme = "light";
+
+    if (currentTheme === "light") {
+      targetTheme = "dark";
+    }
+
+    document.documentElement.setAttribute("data-theme", targetTheme);
+    localStorage.setItem("theme", targetTheme);
+  };
+</script>

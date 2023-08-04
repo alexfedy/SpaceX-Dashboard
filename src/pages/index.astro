@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Dashboard from "../components/Dashboard";
+import ThemeToggle from "../components/ThemeToggle";
+---
+
+<Layout title="SpaceX Dashboard">
+  <main class="max-w-[1500px]">
+    <div class="m-8 md:m-12 relative">
+      <ThemeToggle client:load />
+      <p class="text-3xl font-semibold my-5">SpaceX Dashboard</p>
+      <Dashboard client:load />
+      <div class="w-full flex justify-center my-12 text-sm">
+        Made by <a class="ml-1" href="https://alexfedy.github.io/">alexfedy</a>
+      </div>
+    </div>
+  </main>
+</Layout>
