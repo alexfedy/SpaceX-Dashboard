@@ -18,18 +18,22 @@ export default function LaunchTable(props) {
     switch (columnKey) {
       case "name":
         return (
-          <User
-            avatarProps={{
-              radius: "xl",
-              src: user.links.patch.small
-                ? user.links.patch.small
-                : "/spacexLogo.png",
-            }}
-            description={user.name}
-            name={cellValue}
-          >
+          <div className="flex flex-col justify-center items-center text-center gap-1 md:flex md:flex-row md:justify-start">
+            {" "}
+            <User
+              avatarProps={{
+                radius: "xl",
+                src: user.links.patch.small
+                  ? user.links.patch.small
+                  : "/spacexLogo.png",
+              }}
+              // description={user.name}
+              // name={cellValue}
+            >
+              {/* {user.name ? user.name : "Not found"} */}
+            </User>
             {user.name ? user.name : "Not found"}
-          </User>
+          </div>
         );
       case "date":
         return (
