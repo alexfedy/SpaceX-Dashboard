@@ -111,42 +111,49 @@ const Rockets = (props) => {
               <ModalContent>
                 {(onClose) => (
                   <>
-                    <ModalHeader className="flex flex-col gap-1">
-                      {rocketModal.name}
-                    </ModalHeader>
-                    <ModalBody>
-                      <p>{rocketModal.description}</p>
-                      <p>Stats:</p>
-                      <p>
-                        <span className="mr-2 text-primary">Height:</span>
-                        {rocketModal.height_m}m/{rocketModal.height_f}ft
-                      </p>
-                      <p>
-                        <span className="mr-2 text-primary">Diameter:</span>
-                        {rocketModal.diameter_m}m/{rocketModal.diameter_f}ft
-                      </p>
-                      <p>
-                        <span className="mr-2 text-primary">Mass:</span>
-                        {rocketModal.mass_kg}kg/{rocketModal.mass_lb}lb
-                      </p>
-                      <p>
-                        <span className="mr-2 text-primary">Stages:</span>
-                        {rocketModal.stages}
-                      </p>
-                      <p>
-                        <span className="mr-2 text-primary">Boosters:</span>
-                        {rocketModal.boosters}
-                      </p>
-                      <p>
-                        <a
-                          className="mr-2 text-primary underline"
-                          href={rocketModal.wiki}
-                          target="_blank"
-                        >
-                          Wikipedia Link
-                        </a>
-                      </p>
-                    </ModalBody>
+                    {rocketModal.name ? (
+                      <>
+                        <ModalHeader className="flex flex-col gap-1">
+                          {rocketModal.name}
+                        </ModalHeader>
+                        <ModalBody>
+                          <p>{rocketModal.description}</p>
+                          <p>Stats:</p>
+                          <p>
+                            <span className="mr-2 text-primary">Height:</span>
+                            {rocketModal.height_m}m/{rocketModal.height_f}ft
+                          </p>
+                          <p>
+                            <span className="mr-2 text-primary">Diameter:</span>
+                            {rocketModal.diameter_m}m/{rocketModal.diameter_f}ft
+                          </p>
+                          <p>
+                            <span className="mr-2 text-primary">Mass:</span>
+                            {rocketModal.mass_kg}kg/{rocketModal.mass_lb}lb
+                          </p>
+                          <p>
+                            <span className="mr-2 text-primary">Stages:</span>
+                            {rocketModal.stages}
+                          </p>
+                          <p>
+                            <span className="mr-2 text-primary">Boosters:</span>
+                            {rocketModal.boosters}
+                          </p>
+                          <p>
+                            <a
+                              className="mr-2 text-primary underline"
+                              href={rocketModal.wiki}
+                              target="_blank"
+                            >
+                              Wikipedia Link
+                            </a>
+                          </p>
+                        </ModalBody>
+                      </>
+                    ) : (
+                      <p className="p-4">Could not load rocket description.</p>
+                    )}
+
                     <ModalFooter>
                       <Button color="primary" onPress={onClose}>
                         Close
