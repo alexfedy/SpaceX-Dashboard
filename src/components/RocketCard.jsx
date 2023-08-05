@@ -40,7 +40,7 @@ const RocketCard = (props) => {
                 src={
                   rocketData.images[0]
                     ? rocketData.images[0]
-                    : "/spacecraft.png"
+                    : "/spacexLogo.png"
                 }
                 width="100%"
                 loading="lazy"

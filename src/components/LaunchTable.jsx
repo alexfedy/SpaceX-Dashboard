@@ -20,10 +20,10 @@ export default function LaunchTable(props) {
         return (
           <User
             avatarProps={{
-              radius: "lg",
+              radius: "xl",
               src: user.links.patch.small
                 ? user.links.patch.small
-                : "/spacecraft.png",
+                : "/spacexLogo.png",
             }}
             description={user.name}
             name={cellValue}
