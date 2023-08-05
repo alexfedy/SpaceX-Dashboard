@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const { createThemes } = require("tw-colors");
 const { nextui } = require("@nextui-org/react");
 module.exports = {
   content: [
@@ -11,20 +10,4 @@ module.exports = {
   },
   darkMode: "class",
   plugins: [nextui()],
-  // plugins: [
-  //   createThemes({
-  //     dark: {
-  //       primary: "aqua",
-  //       secondary: "#334756",
-  //       textc: "#DDDDDD",
-  //       backg: "#121212",
-  //     },
-  //     light: {
-  //       primary: "lightblue",
-  //       secondary: "lightblue",
-  //       textc: "#121212",
-  //       backg: "#EEEEEE",
-  //     },
-  //   }),
-  // ],
 };

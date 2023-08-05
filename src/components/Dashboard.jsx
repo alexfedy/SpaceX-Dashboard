@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BiCaretDown } from "react-icons/bi";
 import { Tabs, Tab } from "@nextui-org/react";
 import {
   Dropdown,
@@ -21,32 +22,43 @@ const Dashboard = () => {
   const [launchUrl, setLaunchUrl] = useState(upcomingLaunchesUrl);
   const [launchData, setlaunchData] = useState([]);
   const [rocketData, setRocketData] = useState([]);
-  const [nextLaunch, setNextLaunch] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(launchUrl)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
+    async function fetchLaunchData() {
+      let launch_res = await fetch(launchUrl);
+      if (!launch_res.ok) {
+        setlaunchData(null);
+      } else {
+        let data = await launch_res.json();
         if (!Array.isArray(data)) {
           data = [data];
         }
         setlaunchData(data);
-      });
-    fetch(nextLaunchUrl)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setNextLaunch(data);
-      });
-    fetch(rocketUrl)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
+      }
+    }
+    fetchLaunchData();
+
+    // fetch(launchUrl)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     if (!Array.isArray(data)) {
+    //       data = [data];
+    //     }
+    //     setlaunchData(data);
+    //   });
+
+    async function fetchRocketData() {
+      let rocket_res = await fetch(rocketUrl);
+      if (!rocket_res.ok) {
+        setRocketData(null);
+      } else {
+        let data = await rocket_res.json();
+        if (!Array.isArray(data)) {
+          data = [data];
+        }
         setRocketData(
           data.map((rocket) => {
             return {
@@ -71,7 +83,41 @@ const Dashboard = () => {
             };
           })
         );
-      });
+      }
+    }
+
+    fetchRocketData();
+
+    // fetch(rocketUrl)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     setRocketData(
+    //       data.map((rocket) => {
+    //         return {
+    //           id: rocket.id,
+    //           images: rocket.flickr_images,
+    //           name: rocket.name,
+    //           active: rocket.active,
+    //           cost: rocket.cost_per_launch,
+    //           success: rocket.success_rate_pct,
+    //           first_flight: rocket.first_flight,
+    //           country: rocket.country,
+    //           description: rocket.description,
+    //           height_m: rocket.height.meters,
+    //           height_f: rocket.height.feet,
+    //           diameter_m: rocket.diameter.meters,
+    //           diameter_f: rocket.diameter.feet,
+    //           mass_kg: rocket.mass.kg,
+    //           mass_lb: rocket.mass.lb,
+    //           stages: rocket.stages,
+    //           boosters: rocket.boosters,
+    //           wiki: rocket.wikipedia,
+    //         };
+    //       })
+    //     );
+    //   });
     setIsLoading(false);
   }, [launchUrl]);
   return (
@@ -101,7 +147,11 @@ const Dashboard = () => {
               <>
                 <Dropdown>
                   <DropdownTrigger>
-                    <Button variant="bordered" color="primary">
+                    <Button
+                      variant="bordered"
+                      color="primary"
+                      endContent={<BiCaretDown />}
+                    >
                       Launch Type
                     </Button>
                   </DropdownTrigger>
@@ -135,15 +185,26 @@ const Dashboard = () => {
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-                <Launches
-                  launches={launchData}
-                  header={launchType}
-                  rockets={rocketData}
-                />
+                {launchData && rocketData ? (
+                  launchData.length > 0 &&
+                  rocketData.length > 0 && (
+                    <Launches
+                      launches={launchData}
+                      header={launchType}
+                      rockets={rocketData}
+                    />
+                  )
+                ) : (
+                  <p>Error fetching launch data.</p>
+                )}
               </>
             </Tab>
             <Tab key="rockets" title="Rockets">
-              <Rockets rockets={rocketData} />
+              {rocketData ? (
+                rocketData.length > 0 && <Rockets rockets={rocketData} />
+              ) : (
+                <p>Error fetching rocket data.</p>
+              )}
             </Tab>
           </Tabs>
         </div>

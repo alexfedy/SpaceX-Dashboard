@@ -28,7 +28,7 @@ export default function LaunchTable(props) {
             description={user.name}
             name={cellValue}
           >
-            {user.name}
+            {user.name ? user.name : "Not found"}
           </User>
         );
       case "date":
@@ -36,7 +36,9 @@ export default function LaunchTable(props) {
           <div className="flex flex-col">
             <p className="text-bold text-sm capitalize">{cellValue}</p>
             <p className="text-bold text-sm capitalize text-default-400">
-              {new Date(user.date_utc).toDateString()}
+              {user.date_utc
+                ? new Date(user.date_utc).toDateString()
+                : "Undetermined"}
             </p>
           </div>
         );
@@ -44,7 +46,7 @@ export default function LaunchTable(props) {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-sm capitalize text-default-400">
-              {user.rocket_name}
+              {user.rocket_name ? user.rocket_name : "Unknown"}
             </p>
           </div>
         );
