@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BiCaretDown } from "react-icons/bi";
 import { Tabs, Tab } from "@nextui-org/react";
 import {
   Dropdown,
@@ -11,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import Launches from "./Launches";
 import Rockets from "./Rockets";
+import { ArrowComponent } from "./ArrowComponent";
 
 const nextLaunchUrl = "https://api.spacexdata.com/v5/launches/next";
 const latestLaunchUrl = "https://api.spacexdata.com/v5/launches/latest";
@@ -150,7 +150,7 @@ const Dashboard = () => {
                     <Button
                       variant="bordered"
                       color="primary"
-                      endContent={<BiCaretDown />}
+                      endContent={<ArrowComponent />}
                     >
                       Launch Type
                     </Button>
