@@ -10,8 +10,22 @@ import ThemeToggle from "../components/ThemeToggle";
       <ThemeToggle client:load />
       <p class="text-3xl font-semibold my-5">SpaceX Dashboard</p>
       <Dashboard client:load />
-      <div class="w-full flex justify-center my-12 text-sm">
-        Made by <a class="ml-1" href="https://alexfedy.github.io/">alexfedy</a>
+      <div class="w-full flex flex-col justify-center my-12 text-sm">
+        <p class="w-full text-center">
+          *This is not an official SpaceX website. All data is fetched from the
+          <a
+            class="text-primary"
+            href="https://github.com/r-spacex/SpaceX-API"
+            target="_blank">SpaceX-API</a
+          > on Github.
+        </p>
+        <p class="w-full text-center">
+          Made by <a
+            class="text-primary-600"
+            href="https://alexfedy.github.io/"
+            target="_blank">alexfedy</a
+          >
+        </p>
       </div>
     </div>
   </main>

@@ -1,6 +1,6 @@
 // import Card from "./Card";
-import React, { useState } from "react";
-import { Card, Image, CardHeader, CardBody, Skeleton } from "@nextui-org/react";
+import React from "react";
+import { Card, Image, CardHeader, CardBody } from "@nextui-org/react";
 import {
   Modal,
   ModalContent,

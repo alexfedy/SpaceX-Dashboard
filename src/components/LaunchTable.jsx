@@ -27,11 +27,7 @@ export default function LaunchTable(props) {
                   ? user.links.patch.small
                   : "/spacexLogo.png",
               }}
-              // description={user.name}
-              // name={cellValue}
-            >
-              {/* {user.name ? user.name : "Not found"} */}
-            </User>
+            ></User>
             {user.name ? user.name : "Not found"}
           </div>
         );

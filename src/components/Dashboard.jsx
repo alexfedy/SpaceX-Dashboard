@@ -39,17 +39,6 @@ const Dashboard = () => {
     }
     fetchLaunchData();
 
-    // fetch(launchUrl)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     if (!Array.isArray(data)) {
-    //       data = [data];
-    //     }
-    //     setlaunchData(data);
-    //   });
-
     async function fetchRocketData() {
       let rocket_res = await fetch(rocketUrl);
       if (!rocket_res.ok) {
@@ -88,36 +77,6 @@ const Dashboard = () => {
 
     fetchRocketData();
 
-    // fetch(rocketUrl)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     setRocketData(
-    //       data.map((rocket) => {
-    //         return {
-    //           id: rocket.id,
-    //           images: rocket.flickr_images,
-    //           name: rocket.name,
-    //           active: rocket.active,
-    //           cost: rocket.cost_per_launch,
-    //           success: rocket.success_rate_pct,
-    //           first_flight: rocket.first_flight,
-    //           country: rocket.country,
-    //           description: rocket.description,
-    //           height_m: rocket.height.meters,
-    //           height_f: rocket.height.feet,
-    //           diameter_m: rocket.diameter.meters,
-    //           diameter_f: rocket.diameter.feet,
-    //           mass_kg: rocket.mass.kg,
-    //           mass_lb: rocket.mass.lb,
-    //           stages: rocket.stages,
-    //           boosters: rocket.boosters,
-    //           wiki: rocket.wikipedia,
-    //         };
-    //       })
-    //     );
-    //   });
     setIsLoading(false);
   }, [launchUrl]);
   return (
