@@ -31,11 +31,12 @@ const { title } = Astro.props;
 <script>
   var toggle = document.getElementById("theme-toggle");
 
-  var storedTheme = "light";
-  // var storedTheme = localStorage.getItem("theme") || "light";
-  if (storedTheme)
-    document.documentElement.setAttribute("data-theme", storedTheme);
+  //on page load, set everything to light theme
 
+  document.documentElement.setAttribute("data-theme", "light");
+  localStorage.setItem("theme", "light");
+
+  //when clicking toggle, make sure both match
   toggle.onclick = function () {
     var currentTheme = document.documentElement.getAttribute("data-theme");
     var targetTheme = "light";

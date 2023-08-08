@@ -34,7 +34,10 @@ const Launches = (props) => {
     <div className="mt-2 w-full">
       <>
         <div className="p-4 my-2 bg-primary text-white rounded-lg">
-          {header}
+          {header} -{" "}
+          <span className="text-white/80">
+            Click launch item for launch pad information
+          </span>
         </div>
       </>
       {launchData.length == 0 && <p>Could not load launch data.</p>}
